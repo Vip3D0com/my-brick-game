@@ -53,6 +53,50 @@
             flex-direction: column;
         }
 
+        /* تصميم السطر البارز 3D الفاخر للشركة والبرموكود */
+        .promo-3d-banner {
+            background: linear-gradient(135deg, rgba(0, 255, 204, 0.15), rgba(0, 212, 255, 0.1));
+            border: 2px solid var(--accent-gold);
+            padding: 12px 18px;
+            border-radius: 16px;
+            text-align: center;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 15px rgba(0,255,204,0.3);
+            transform: translateZ(20px);
+            animation: bannerGlow 2s infinite alternate;
+        }
+        .promo-only-text {
+            font-size: 0.85rem;
+            color: #fff;
+            font-weight: bold;
+            margin-bottom: 4px;
+            text-shadow: 0 0 8px rgba(255,255,255,0.6);
+            letter-spacing: 1px;
+        }
+        .promo-main-row {
+            font-size: 1.1rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8), 0 0 12px var(--accent-gold);
+        }
+        .promo-arrow {
+            display: inline-block;
+            animation: bounceArrow 1s infinite alternate;
+            font-size: 1.2rem;
+        }
+        @keyframes bannerGlow {
+            0% { border-color: var(--accent-gold); box-shadow: 0 10px 25px rgba(0,0,0,0.6), 0 0 15px rgba(0,255,204,0.3); }
+            100% { border-color: #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.8), 0 0 25px var(--accent-gold); }
+        }
+        @keyframes bounceArrow {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-5px); }
+        }
+
         .login-box {
             background: var(--glass-bg);
             padding: 30px 25px;
@@ -72,22 +116,6 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 15px;
-        }
-
-        /* ستايل النص الـ 3D البارز فوق خانة الباسورد (محدث بالشركة والبروموكود) */
-        .security-warning-3d {
-            font-size: 0.92rem;
-            font-weight: bold;
-            color: #ffcc00;
-            text-align: center;
-            margin-bottom: 12px;
-            line-height: 1.6;
-            text-shadow: 1px 1px 0px #000, 
-                         2px 2px 5px rgba(0, 0, 0, 0.9);
-            background: rgba(0, 0, 0, 0.4);
-            padding: 10px;
-            border-radius: 12px;
-            border: 1px dashed rgba(255, 204, 0, 0.5);
         }
 
         input, select {
@@ -299,16 +327,19 @@
 </div>
 
 <div id="pass-screen" class="overlay">
+    <!-- السطر البارز 3D المضاف بناءً على طلبك -->
+    <div class="promo-3d-banner">
+        <div class="promo-only-text">الشركة الوحيدة فقط</div>
+        <div class="promo-main-row">
+            <span>Xparibet</span>
+            <span class="promo-arrow">⬅</span>
+            <span>RB100</span>
+        </div>
+    </div>
+
     <div class="login-box">
         <h2>SECURE ACCESS 🔐</h2>
         <div class="trial-badge"><span>⚡</span> أدخل باسورد الدخول الثابت</div>
-        
-        <!-- السطر البارز بنظام 3D الفاخر (الخاص بالشركة Xparibet والبرمو كود RB100 مع السهم وعبارة الشركة الوحيدة فقط) -->
-        <div class="security-warning-3d">
-            ⚠️ الشركة الوحيدة فقط: ➔ <span style="color: #00ffcc; font-size: 1.05rem;">Xparibet</span> | بالبروموكود: <span style="color: #00ff66; font-size: 1.05rem;">RB100</span>
-            <div style="margin-top: 6px; font-size: 0.82rem; color: #ffcc00;">طالب بتفعيل الـ ID الخاص بك قبل الإيداع لضمان حصولك على الفرص كاملة.</div>
-        </div>
-
         <input type="password" id="pass-input" placeholder="أدخل الباسورد هنا">
         <button class="btn-3d" style="background:var(--accent-gold); margin-top: 12px;" onclick="checkPass()">دخول</button>
         <div class="version-tag">SYSTEM v8.8 (Fixed Password Engine)</div>
@@ -506,7 +537,7 @@
 
 <script>
     const GLOBAL_MASTER_KEY = "vip_3d_fixed_password_db_v1";
-    const FIXED_PASSWORD = "129088";
+    const FIXED_PASSWORD = "129088"; // كلمة المرور الثابتة الجديدة للدخول
 
     function getGlobalDB() {
         let defaultData = {
